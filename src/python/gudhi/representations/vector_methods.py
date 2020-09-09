@@ -408,7 +408,7 @@ class Entropy(BaseEstimator, TransformerMixin):
             new_diagram = DiagramScaler(use=True, scalers=[([1], MaxAbsScaler())]).fit_transform([diagram])[0]
 
             if self.mode == "scalar":
-                ent = - np.sum( np.multiply(new_diagram[:,1], np.log(new_diagram[:,1])) )
+                ent = - np.nansum( np.multiply(new_diagram[:,1], np.log(new_diagram[:,1])) )
                 Xfit.append(np.array([[ent]]))
 
             else:
